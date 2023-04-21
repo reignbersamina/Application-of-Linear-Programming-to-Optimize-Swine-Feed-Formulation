@@ -13,29 +13,6 @@ x8 = optimvar('Gabi', 'LowerBound', 0, 'UpperBound', 80);
 x9 = optimvar('Madre_de_Agua', 'LowerBound', 0, 'UpperBound', Inf); 
 x10 = optimvar('Water_Lily', 'LowerBound', 0, 'UpperBound', Inf); 
 
-%x11 = optimvar('Amount_of_Ricebran_1', 'LowerBound', 0, 'UpperBound', 25); 
-%x12 = optimvar('Amount_of_Ricebran_2', 'LowerBound', 0, 'UpperBound', 25); 
-
-%c1 = optimvar('Cost_of_Coconut_Residue', 'LowerBound', 0, 'UpperBound', 19); 
-%c2 = optimvar('Cost_of_Water_Spinach', 'LowerBound', 0, 'UpperBound', 12.75); 
-%c3 = optimvar('Cost_of_Sweet_Potato_Leaves', 'LowerBound', 0, 'UpperBound', 12.75); 
-%c4 = optimvar('Cost_of_Cassava_Leaves', 'LowerBound', 0, 'UpperBound', 12.75); 
-%c5 = optimvar('Cost_of_Banana_Pseudo_Stem', 'LowerBound', 0, 'UpperBound', 19); 
-%c6 = optimvar('Cost_of_Duckweed_Fern', 'LowerBound', 0, 'UpperBound', 8.30); 
-%c7 = optimvar('Cost_of_Lead_Tree_Leaves', 'LowerBound', 0, 'UpperBound', 8.30); 
-%c8 = optimvar('Cost_of_Taro_Leaves', 'LowerBound', 0, 'UpperBound', 16.65); 
-%c9 = optimvar('Cost_of_Madre_de_Agua_Leaves', 'LowerBound', 0, 'UpperBound', 9.50); 
-%c10 = optimvar('Cost_of_Water_Hyacinth_Leaves', 'LowerBound', 0, 'UpperBound', 16.65); 
-%c11 = optimvar('Cost_of_Ricebran_1', 'LowerBound', 0, 'UpperBound', 12.50); 
-%c12 = optimvar('Cost_of_Ricebran_2', 'LowerBound', 0, 'UpperBound', 10);
-
-%z1 = optimvar('Crude_Protein', 'LowerBound', 0, 'UpperBound', Inf); 
-%z2 = optimvar('Crude_Fiber', 'LowerBound', 0, 'UpperBound', Inf); 
-%z3 = optimvar('Crude_Fat', 'LowerBound', 0, 'UpperBound', Inf); 
-%z4 = optimvar('Calcium', 'LowerBound', 0, 'UpperBound', Inf); 
-%z5 = optimvar('Moisture', 'LowerBound', 0, 'UpperBound', Inf); 
-%z6 = optimvar('Phosphorus', 'LowerBound', 0, 'UpperBound', Inf);
-
 %Optimization Problem
 
 prob = optimproblem('Objective', x1*20+x2*25+x3*35+x4*15.3+x5*19+x6*35+x7*8.30+x8*25+x9*9.50+x10*16.65, ...
@@ -52,5 +29,5 @@ prob.Constraints.c6 = 0.6*x1+0.41*x2+0.24*x3+0.76*x4+0.01*x5+0.9*x6+0.29*x7+0.8*
 prob.Constraints.c7 = x1+x2+x3+x4+x5+x6+x7+x8+x9+x10 == 1;
 
 prob1 = prob2struct(prob);
-[sol, fval] = solve(prob)
+[sol, fval] = linprog(prob1)
 
